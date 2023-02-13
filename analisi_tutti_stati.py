@@ -97,7 +97,7 @@ uttf, utsp, utfr, utmax = fn.trasf(utm)
 virtf, virsp, virfr, virmax = fn.trasf(virm)
 wastf, wassp, wasfr, wasmax = fn.trasf(wasm)
 wyotf, wyosp, wyofr, wyomax = fn.trasf(wyom)
-'''
+
 print('Periodo Alabama: ', int(1/alafr[alamax]))
 print('Periodo Arizona: ', int(1/arifr[arimax]))
 print('Periodo Arkansas: ', int(1/arkfr[arkmax]))
@@ -138,7 +138,7 @@ print('Periodo Utah: ', int(1/utfr[utmax]))
 print('Periodo Virginia: ', int(1/virfr[virmax]))
 print('Periodo Washington: ', int(1/wasfr[wasmax]))
 print('Periodo Wyoming: ', int(1/wyofr[wyomax]))
-'''
+
 #filtro
 alaf = fn.inv(alasp, 4e3, alatf, alam)
 arif = fn.inv(arisp, 5e6, aritf, arim)
@@ -182,7 +182,7 @@ wasf = fn.inv(wassp, 2e3, wastf, wasm)
 wyof = fn.inv(wyosp, 13e4, wyotf, wyom)
 
 #grafici con dati originali e filtrati
-'''
+
 #regione 1: maine, new york, massachusetts, rhode island, connecticut
 fig,ax = plt.subplots(5,1, figsize=(40,40))
 ax[0].plot(maid, maim, color='forestgreen')
@@ -322,7 +322,7 @@ ax[3].set_title('Arizona', loc='left', y=0.75, x=0.02)
 ax[4].set_title('New Mexico', loc='left', y=0.75, x=0.02)
 fig.suptitle('media della densità di NO2 [$\mu g/m^3$] al giorno [d] in 5 stati confinanti, dati originali e filtrati')
 plt.show()
-'''
+
 #regione 8: washington, oregon, idaho, california, hawaii
 fig,ax = plt.subplots(5,1, figsize=(40,40))
 ax[0].plot(wasd, wasm, color='forestgreen')
