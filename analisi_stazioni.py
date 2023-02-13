@@ -52,7 +52,7 @@ col2m = col2['NO2 Mean'].values
 col3m = col3['NO2 Mean'].values
 col3001m = col3001['NO2 Mean'].values
 nm23m = nm23['NO2 Mean'].values
-'''
+
 #grafico stazioni arizona
 fig,ax = plt.subplots(3,1, figsize=(40,40))
 ax[0].plot(ar3002d, ar3002m, color='forestgreen')
@@ -99,7 +99,7 @@ plt.show()
 plt.plot(nm23d, nm23m, color='mediumslateblue')
 plt.title('media della densità di NO2 [$\mu g/m^3$] al giorno [d] in New Mexico')
 plt.show()
-'''
+
 #analisi di Fourier dei dati di NO2 delle stazioni
 #trasformate di fourier della serie temporale
 ar3002tf = fft.rfft(ar3002m)
@@ -141,7 +141,7 @@ col2fr = a*fft.rfftfreq(col2tf.size, d=1)
 col3fr = a*fft.rfftfreq(col3tf.size, d=1)
 col3001fr = a*fft.rfftfreq(col3001tf.size, d=1)
 nm23fr = a*fft.rfftfreq(nm23tf.size, d=1)
-'''
+
 #grafico spettro di potenza in funzione della frequenza
 #arizona
 fig,ax = plt.subplots(3,1, figsize=(40,40))
@@ -213,7 +213,7 @@ plt.title('spettro di potenza [$\mu g^2/m^6$] su frequenza [$d^{-1}$] di NO2 in 
 plt.yscale('log')
 plt.xscale('log')
 plt.show()
-'''
+
 #periodicità
 #massimo dello spettro di potenza
 ar3002max = np.argmax(ar3002sp[1:ar3002tf.size//2])+1
@@ -228,7 +228,7 @@ col2max = np.argmax(col2sp[1:col2tf.size//2])+1
 col3max = np.argmax(col3sp[1:col3tf.size//2])+1
 col3001max = np.argmax(col3001sp[1:col3001tf.size//2])+1
 nm23max = np.argmax(nm23sp[1:nm23tf.size//2])+1
-'''
+
 print('Arizona 3002: Massimo PS: {:f} - Freq {:f} - Periodo: {:d}'.format( ar3002sp[ar3002max], ar3002fr[ar3002max], int(1/ar3002fr[ar3002max])))
 print('Arizona 9997: Massimo PS: {:f} - Freq {:f} - Periodo: {:d}'.format( ar9997sp[ar9997max], ar9997fr[ar9997max], int(1/ar9997fr[ar9997max])))
 print('Arizona 1028: Massimo PS: {:f} - Freq {:f} - Periodo: {:d}'.format( ar1028sp[ar1028max], ar1028fr[ar1028max], int(1/ar1028fr[ar1028max])))
@@ -241,9 +241,9 @@ print('Colorado 2: Massimo PS: {:f} - Freq {:f} - Periodo: {:d}'.format( col2sp[
 print('Colorado 3: Massimo PS: {:f} - Freq {:f} - Periodo: {:d}'.format( col3sp[col3max], col3fr[col3max], int(1/col3fr[col3max])))
 print('Colorado 3001: Massimo PS: {:f} - Freq {:f} - Periodo: {:d}'.format( col3001sp[col3001max], col3001fr[col3001max], int(1/col3001fr[col3001max])))
 print('New Mexico 23: Massimo PS: {:f} - Freq {:f} - Periodo: {:d}'.format( nm23sp[nm23max], nm23fr[nm23max], int(1/nm23fr[nm23max])))
-'''
+
 #i periodi sono tutti di circa un anno, tranne la stazione 2 in Utah che ha troppi pochi dati
-'''
+
 #grafico spettro di potenza in funzione del periodo
 #arizona
 fig,ax = plt.subplots(3,1, figsize=(40,40))
@@ -327,7 +327,7 @@ plt.title('spettro di potenza [$\mu g^2/m^6$] su periodo T [$d$] di NO2 in New M
 plt.yscale('log')
 plt.xscale('log')
 plt.show()
-'''
+
 #filtro ai coefficienti di fourier selezionando solo le componenti che descrivono l'andamento generale in funzione del tempo (escludendo futtuazioni di breve periodo) e faccio la trasformata FFT inversa con coeff filtrati 
 ar3002f = fn.inv(ar3002sp, 5e6, ar3002tf, ar3002m)
 ar9997f = fn.inv(ar9997sp, 5e6, ar9997tf, ar9997m)
@@ -341,7 +341,7 @@ col2f = fn.inv(col2sp, 5e6, col2tf, col2m)
 col3f = fn.inv(col3sp, 1e3, col3tf, col3m)
 col3001f = fn.inv(col3001sp, 5e6, col3001tf, col3001m)
 nm23f = fn.inv(nm23sp, 5e6, nm23tf, nm23m)
-'''
+
 #grafici di confronto tra segnale originale e il segnale filtrato
 #grafico stazioni arizona
 fig,ax = plt.subplots(3,1, figsize=(40,40))
@@ -370,7 +370,7 @@ ax[1].set_title('stazione 3006', loc='left', y=0.75, x=0.02)
 ax[2].set_title('stazione 5632', loc='left', y=0.75, x=0.02)
 fig.suptitle('media della densità di NO2 [$\mu g/m^3$] al giorno [d] in Utah, dati originali e filtrati')
 plt.show()
-'''
+
 #grafico stazioni wyoming
 fig,ax = plt.subplots(2,1, figsize=(40,40))
 ax[0].plot(wy100d, wy100m, color='lightcoral')
@@ -381,7 +381,7 @@ ax[0].set_title('stazione 100', loc='left', y=0.75, x=0.02)
 ax[1].set_title('stazione 870', loc='left', y=0.75, x=0.02)
 fig.suptitle('media della densità di NO2 [$\mu g/m^3$] al giorno [d] in Wyoming, dati originali e filtrati')
 plt.show()
-'''
+
 #grafico stazioni colorado
 fig,ax = plt.subplots(3,1, figsize=(40,40))
 ax[0].plot(col2d, col2m, color='lightskyblue')
@@ -400,4 +400,4 @@ plt.show()
 plt.plot(nm23d, nm23m, color='mediumslateblue')
 plt.plot(nm23d, nm23f, color='rebeccapurple')
 plt.title('media della densità di NO2 [$\mu g/m^3$] al giorno [d] in New Mexico, dati originali e filtrati')
-plt.show()'''
+plt.show()
