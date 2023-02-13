@@ -1,4 +1,4 @@
-Progetto per l'esame di Metodi Computazionali per la Fisica
+# Progetto per l'esame di Metodi Computazionali per la Fisica
 
 Lo scopo di questo progetto era di analizzare un inquinante a scelta, in questo caso NO2, presente negli Usa.
 La consegna si trova nel file Inquinanti_USA_2011_2013.pdf, mentre i dati originali forniti sono nel file pollution_us_2011_2013.csv
