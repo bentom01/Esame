@@ -27,7 +27,7 @@ utd, utm = fn.stato(tab1, 49)
 nmd, nmm = fn.stato(tab1, 35)
 cold, colm = fn.stato(tab1, 8)
 wyd, wym = fn.stato(tab1, 56)
-'''
+
 #grafico stati
 fig,ax = plt.subplots(5,1, figsize=(40,40))
 ax[0].plot(ard, arm, color='forestgreen')
@@ -42,7 +42,7 @@ ax[3].set_title('Colorado', loc='left', y=0.75, x=0.02)
 ax[4].set_title('Wyoming', loc='left', y=0.75, x=0.02)
 fig.suptitle('media della densità di NO2 [$\mu g/m^3$] al giorno [d] in 5 stati confinanti')
 plt.show()
-'''
+
 #analisi di Fourier dei dati di NO2 delle stazioni
 #trasformate di fourier della serie temporale
 artf, arsp, arfr, armax = fn.trasf(arm)
@@ -50,7 +50,7 @@ uttf, utsp, utfr, utmax = fn.trasf(utm)
 nmtf, nmsp, nmfr, nmmax = fn.trasf(nmm)
 coltf, colsp, colfr, colmax = fn.trasf(colm)
 wytf, wysp, wyfr, wymax = fn.trasf(wym)
-'''
+
 #grafico spettro di potenza in funzione della frequenza
 fig,ax = plt.subplots(5,1, figsize=(40,40))
 ax[0].plot(arfr[1:artf.size//2], arsp[1:artf.size//2], color='forestgreen')
@@ -110,14 +110,14 @@ ax[4].set_yscale('log')
 ax[4].set_xscale('log')
 fig.suptitle('spettro di potenza [$\mu g^2/m^6$] su periodo T [$d$] di NO2 in 5 stati confinanti')
 plt.show()
-'''
+
 #filtro ai coefficienti di fourier selezionando solo le componenti che descrivono l'andamento generale in funzione del tempo (escludendo futtuazioni di breve periodo) e faccio la trasformata FFT inversa con coeff filtrati 
 arf = fn.inv(arsp, 5e6, artf, arm)
 utf = fn.inv(utsp, 5e6, uttf, utm)
 nmf = fn.inv(nmsp, 5e6, nmtf, nmm)
 colf = fn.inv(colsp, 5e6, coltf, colm)
 wyf = fn.inv(wysp, 1e5, wytf, wym)
-'''
+
 #grafici di confronto tra segnale originale e il segnale filtrato
 fig,ax = plt.subplots(5,1, figsize=(40,40))
 ax[0].plot(ard, arm, color='forestgreen')
@@ -137,7 +137,7 @@ ax[3].set_title('Colorado', loc='left', y=0.75, x=0.02)
 ax[4].set_title('Wyoming', loc='left', y=0.75, x=0.02)
 fig.suptitle('media della densità di NO2 [$\mu g/m^3$] al giorno [d] in 5 stati confinanti, dati originali e filtrati')
 plt.show()
-'''
+
 #correlazione tra i vari stati
 '''
 print('lunghezza arm: ', len(arm))
@@ -161,14 +161,13 @@ df['wyoming']=wyc
 
 print(df.corr())
 
-
 #Analizzare andamento e caratteristiche di rumore della differenza fra i dati e le serie temporali filtrate
 arr = arm - arf
 utr = utm - utf
 nmr = nmm - nmf
 colr = colm - colf
 wyr = wym - wyf
-'''
+
 #grafico rumori
 fig,ax = plt.subplots(5,1, figsize=(40,40))
 ax[0].plot(ard, arr, color='forestgreen')
@@ -183,14 +182,13 @@ ax[3].set_title('Colorado', loc='left', y=0.75, x=0.02)
 ax[4].set_title('Wyoming', loc='left', y=0.75, x=0.02)
 fig.suptitle('rumore della densità di NO2 [$\mu g/m^3$] al giorno [d] in 5 stati confinanti')
 plt.show()
-'''
+
 arrtf, arrsp, arrfr, arrmax = fn.trasf(arr)
 utrtf, utrsp, utrfr, utrmax = fn.trasf(utr)
 nmrtf, nmrsp, nmrfr, nmrmax = fn.trasf(nmr)
 colrtf, colrsp, colrfr, colrmax = fn.trasf(colr)
 wyrtf, wyrsp, wyrfr, wyrmax = fn.trasf(wyr)
 
-'''
 fig,ax = plt.subplots(5,1, figsize=(40,40))
 ax[0].plot(arrfr[1:arrtf.size//2], arrsp[1:arrtf.size//2], 'o', color='forestgreen')
 ax[1].plot(utrfr[1:utrtf.size//2], utrsp[1:utrtf.size//2], 'o', color='darkorange')
@@ -214,7 +212,7 @@ ax[4].set_yscale('log')
 ax[4].set_xscale('log')
 fig.suptitle('spettro di potenza [$\mu g^2/m^6$] su frequenza [$d^{-1}$] del rumore di NO2 in 5 stati confinanti')
 plt.show()
-'''
+
 #sembrano essere tutti rumori bianchi
 
 #fit
@@ -224,7 +222,7 @@ params2, params_covariance2 = optimize.curve_fit(fn.noise, utrfr[30:utrtf.size//
 params3, params_covariance3 = optimize.curve_fit(fn.noise, nmrfr[30:nmrtf.size//2], nmrsp[30:nmrtf.size//2], p0=[pstart])
 params4, params_covariance4 = optimize.curve_fit(fn.noise, colrfr[30:colrtf.size//2], colrsp[30:colrtf.size//2], p0=[pstart])
 params5, params_covariance5 = optimize.curve_fit(fn.noise, wyrfr[30:wyrtf.size//2], wyrsp[30:wyrtf.size//2], p0=[pstart])
-'''
+
 print('params arizona ', params1)
 print('params_covariance arizona ', params_covariance1)
 print('params utah', params2)
@@ -235,13 +233,13 @@ print('params colorado ', params4)
 print('params_covariance colorado ', params_covariance4)
 print('params wyoming ', params3)
 print('params_covariance wyoming ', params_covariance5)
-'''
+
 y1=fn.noise(arrfr[1:arrtf.size//2], params1[0], params1[1])
 y2=fn.noise(utrfr[1:utrtf.size//2], params2[0], params2[1])
 y3=fn.noise(nmrfr[1:nmrtf.size//2], params3[0], params3[1])
 y4=fn.noise(colrfr[1:colrtf.size//2], params4[0], params4[1])
 y5=fn.noise(wyrfr[1:wyrtf.size//2], params5[0], params5[1])
-'''
+
 #grafico fit e spettro
 fig,ax = plt.subplots(5,1, figsize=(40,40))
 ax[0].plot(arrfr[1:arrtf.size//2], arrsp[1:arrtf.size//2], 'o', color='forestgreen')
@@ -271,4 +269,4 @@ ax[4].set_yscale('log')
 ax[4].set_xscale('log')
 fig.suptitle('fit del rumore di NO2 in 5 stati confinanti')
 plt.show()
-'''
+
