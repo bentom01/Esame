@@ -62,7 +62,7 @@ def noise(f, a, n):
     return a/(f**n)
 #n=0 -> white noise, n=1 -> pink noise, n=2 -> red noise
 
-def corr(d1, d2, d3, d4, d5, m1, m2, m3, m4, m5, s1, s2, s3, s4, s5):
+def correl(d1, d2, d3, d4, d5, m1, m2, m3, m4, m5, s1, s2, s3, s4, s5):
     tab1 = pd.DataFrame()
     tab2 = pd.DataFrame()
     tab3 = pd.DataFrame()
