@@ -41,6 +41,7 @@ ax[2].set_title('New Mexico', loc='left', y=0.75, x=0.02)
 ax[3].set_title('Colorado', loc='left', y=0.75, x=0.02)
 ax[4].set_title('Wyoming', loc='left', y=0.75, x=0.02)
 fig.suptitle('media della densità di NO2 [$\mu g/m^3$] al giorno [d] in 5 stati confinanti')
+fig.savefig('dati_5_stati.png')
 plt.show()
 
 #analisi di Fourier dei dati di NO2 delle stazioni
@@ -74,6 +75,7 @@ ax[3].set_xscale('log')
 ax[4].set_yscale('log')
 ax[4].set_xscale('log')
 fig.suptitle('spettro di potenza [$\mu g^2/m^6$] su frequenza [$d^{-1}$] di NO2 in 5 stati confinanti')
+fig.savefig('sp_fr_5_stati.png')
 plt.show()
 
 print('Arizona: Massimo PS: {:f} - Freq {:f} - Periodo: {:d}'.format( arsp[armax], arfr[armax], int(1/arfr[armax])))
@@ -109,6 +111,7 @@ ax[3].set_xscale('log')
 ax[4].set_yscale('log')
 ax[4].set_xscale('log')
 fig.suptitle('spettro di potenza [$\mu g^2/m^6$] su periodo T [$d$] di NO2 in 5 stati confinanti')
+fig.savefig('sp_T_5_stati.png')
 plt.show()
 
 #filtro ai coefficienti di fourier selezionando solo le componenti che descrivono l'andamento generale in funzione del tempo (escludendo futtuazioni di breve periodo) e faccio la trasformata FFT inversa con coeff filtrati 
@@ -136,10 +139,11 @@ ax[2].set_title('New Mexico', loc='left', y=0.75, x=0.02)
 ax[3].set_title('Colorado', loc='left', y=0.75, x=0.02)
 ax[4].set_title('Wyoming', loc='left', y=0.75, x=0.02)
 fig.suptitle('media della densità di NO2 [$\mu g/m^3$] al giorno [d] in 5 stati confinanti, dati originali e filtrati')
+fig.savefig('filtro_5_stati.png')
 plt.show()
 
 #correlazione tra i vari stati
-df = fn.corr(ard, utd, nmd, cold, wyd, arm, utm, nmm, colm, wym, 'AZ', 'UT', 'NM', 'CO', 'WY')
+df = fn.correl(ard, utd, nmd, cold, wyd, arm, utm, nmm, colm, wym, 'AZ', 'UT', 'NM', 'CO', 'WY')
 print('correlazione tra gli stati')
 print(df.corr())
 
@@ -163,6 +167,7 @@ ax[2].set_title('New Mexico', loc='left', y=0.75, x=0.02)
 ax[3].set_title('Colorado', loc='left', y=0.75, x=0.02)
 ax[4].set_title('Wyoming', loc='left', y=0.75, x=0.02)
 fig.suptitle('rumore della densità di NO2 [$\mu g/m^3$] al giorno [d] in 5 stati confinanti')
+fig.savefig('rumore_5_stati.png')
 plt.show()
 
 arrtf, arrsp, arrfr, arrmax = fn.trasf(arr)
@@ -193,6 +198,7 @@ ax[3].set_xscale('log')
 ax[4].set_yscale('log')
 ax[4].set_xscale('log')
 fig.suptitle('spettro di potenza [$\mu g^2/m^6$] su frequenza [$d^{-1}$] del rumore di NO2 in 5 stati confinanti')
+fig.savefig('sp_rumore_5_stati.png')
 plt.show()
 
 #sembrano essere tutti rumori bianchi
@@ -250,4 +256,5 @@ ax[3].set_xscale('log')
 ax[4].set_yscale('log')
 ax[4].set_xscale('log')
 fig.suptitle('fit del rumore di NO2 in 5 stati confinanti')
+fig.savefig('fit_5_stati.png')
 plt.show()
