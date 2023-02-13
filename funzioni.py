@@ -31,7 +31,11 @@ def stazione(t, s):
     #fornendo così un solo dato al giorno
     t1 = t.groupby(['Site Num'])
     t2 = t1.get_group(s)
-    return t2.groupby(['Date Local'], as_index = False).mean()
+    t3 = t2.groupby(['Date Local'], as_index = False).mean()
+    d = t3['Date Local'].values
+    d = pd.to_datetime(d, format='%Y-%m-%d')
+    m = t3['NO2 Mean'].values
+    return d, m
 
 def trasf(a):
     c = 0.5
@@ -57,3 +61,26 @@ def noise(f, a, n):
     #funzione per fare il fit del rumore e capire la tipologia di rumore
     return a/(f**n)
 #n=0 -> white noise, n=1 -> pink noise, n=2 -> red noise
+
+def corr(d1, d2, d3, d4, d5, m1, m2, m3, m4, m5, s1, s2, s3, s4, s5):
+    tab1 = pd.DataFrame()
+    tab2 = pd.DataFrame()
+    tab3 = pd.DataFrame()
+    tab4 = pd.DataFrame()
+    tab5 = pd.DataFrame()
+    tab1['date'] = d1
+    tab2['date'] = d2
+    tab3['date'] = d3
+    tab4['date'] = d4
+    tab5['date'] = d5
+    tab1[s1] = m1
+    tab2[s2] = m2
+    tab3[s3] = m3
+    tab4[s4] = m4
+    tab5[s5] = m5
+    df1 = pd.merge(tab1, tab2, how='inner', left_on='date', right_on='date')
+    df2 = pd.merge(df1, tab3, how='inner', left_on='date', right_on='date')
+    df3 = pd.merge(df2, tab4, how='inner', left_on='date', right_on='date')
+    df4 = pd.merge(df3, tab5, how='inner', left_on='date', right_on='date')
+    df = df4[[s1, s2, s3, s4, s5]]
+    return df
