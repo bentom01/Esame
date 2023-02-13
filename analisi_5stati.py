@@ -139,26 +139,8 @@ fig.suptitle('media della densità di NO2 [$\mu g/m^3$] al giorno [d] in 5 stati
 plt.show()
 
 #correlazione tra i vari stati
-'''
-print('lunghezza arm: ', len(arm))
-print('lunghezza utm: ', len(utm))
-print('lunghezza nmm: ', len(nmm))
-print('lunghezza colm: ', len(colm))
-print('lunghezza wym: ', len(wym))
-'''
-arc = arm[:1046]
-utc = utm[:1046]
-nmc = nmm[:1046]
-colc = colm[:1046]
-wyc = wym[:1046]
-
-df = pd.DataFrame()
-df['arizona']=arc
-df['utah']=utc
-df['new mexico']=nmc
-df['colorado']=colc
-df['wyoming']=wyc
-
+df = fn.corr(ard, utd, nmd, cold, wyd, arm, utm, nmm, colm, wym, 'AZ', 'UT', 'NM', 'CO', 'WY')
+print('correlazione tra gli stati')
 print(df.corr())
 
 #Analizzare andamento e caratteristiche di rumore della differenza fra i dati e le serie temporali filtrate
@@ -269,4 +251,3 @@ ax[4].set_yscale('log')
 ax[4].set_xscale('log')
 fig.suptitle('fit del rumore di NO2 in 5 stati confinanti')
 plt.show()
-
