@@ -12,14 +12,18 @@ def stato(t, s):
     t2 = t1.get_group(s)
     t3 = t2.groupby(['Date Local'], as_index = False).mean()
     d = t3['Date Local'].values
+    d = pd.to_datetime(d, format='%Y-%m-%d')
     m = t3['NO2 Mean'].values
     return d, m
 
-def csv_stato(t, n):
+def tab_stato(t, s, n):
     #funzione che crea un file csv con i dati di un singolo stato
-    #t= tabella da salvare
+    #t= tabella originale
+    #s= codice dello stato di cui voglio creare il file
     #n= nome da dare al file
-    t.to_csv(n+'.csv', index = False)
+    t1 = t.groupby(['State Code'])
+    t2 = t1.get_group(s)
+    t2.to_csv(n+'.csv', index = False)
 
 def stazione(t, s):
     #funzione che mi restituisce i dati con solo i valori di una stazione,
