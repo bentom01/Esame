@@ -203,6 +203,10 @@ ax[4].set_title('Connecticut', loc='left', y=0.75, x=0.02)
 fig.suptitle('media della densità di NO2 [$\mu g/m^3$] al giorno [d] in 5 stati confinanti, dati originali e filtrati')
 plt.show()
 
+df1 = fn.corr(maid, nyd, masd, rid, cond, maim, nym, masm, rim, conm, 'ME', 'NY', 'MA', 'RI', 'CT')
+print('correlazione regione 1')
+print(df1.corr())
+
 #regione 2: pennsylvania, new jersey, maryland, delaware, district of columbia
 fig,ax = plt.subplots(5,1, figsize=(40,40))
 ax[0].plot(pend, penm, color='forestgreen')
@@ -222,6 +226,10 @@ ax[3].set_title('Delaware', loc='left', y=0.75, x=0.02)
 ax[4].set_title('District of Columbia', loc='left', y=0.75, x=0.02)
 fig.suptitle('media della densità di NO2 [$\mu g/m^3$] al giorno [d] in 5 stati confinanti, dati originali e filtrati')
 plt.show()
+
+df2 = fn.corr(pend, njd, mard, delad, docd, penm, njm, marm, delam, docm, 'PA', 'NJ', 'MD', 'DE', 'DC')
+print('correlazione regione 2')
+print(df2.corr())
 
 #regione 3: north carolina, georgia, alabama, virginia, florida
 fig,ax = plt.subplots(5,1, figsize=(40,40))
@@ -243,6 +251,10 @@ ax[4].set_title('Florida', loc='left', y=0.75, x=0.02)
 fig.suptitle('media della densità di NO2 [$\mu g/m^3$] al giorno [d] in 5 stati confinanti, dati originali e filtrati')
 plt.show()
 
+df3 = fn.corr(ncd, geod, alad, vird, flod, ncm, geom, alam, virm, flom, 'NC', 'GA', 'AL', 'VA', 'FL')
+print('correlazione regione 3')
+print(df3.corr())
+
 #regione 4: ohio, indiana, kentucky, illinois, missouri
 fig,ax = plt.subplots(5,1, figsize=(40,40))
 ax[0].plot(ohd, ohm, color='forestgreen')
@@ -262,6 +274,10 @@ ax[3].set_title('Illinois', loc='left', y=0.75, x=0.02)
 ax[4].set_title('Missouri', loc='left', y=0.75, x=0.02)
 fig.suptitle('media della densità di NO2 [$\mu g/m^3$] al giorno [d] in 5 stati confinanti, dati originali e filtrati')
 plt.show()
+
+df4 = fn.corr(ohd, indd, kend, illd, misd, ohm, indm, kenm, illm, mism, 'OH', 'IN', 'KY', 'IL', 'MO')
+print('correlazione regione 4')
+print(df4.corr())
 
 #regione 5: wyoming, minnesota, iowa, north dakota, south dakota
 fig,ax = plt.subplots(5,1, figsize=(40,40))
@@ -283,6 +299,10 @@ ax[4].set_title('South Dakota', loc='left', y=0.75, x=0.02)
 fig.suptitle('media della densità di NO2 [$\mu g/m^3$] al giorno [d] in 5 stati confinanti, dati originali e filtrati')
 plt.show()
 
+df5 = fn.corr(wyod, minnd, iowd, ndd, sdd, wyom, minnm, iowm, ndm, sdm, 'WY', 'MN', 'IA', 'ND', 'SD')
+print('correlazione regione 5')
+print(df5.corr())
+
 #regione 6: louisiana, kansas, arkansas, oklahoma, texas
 fig,ax = plt.subplots(5,1, figsize=(40,40))
 ax[0].plot(loud, loum, color='forestgreen')
@@ -302,6 +322,10 @@ ax[3].set_title('Oklahoma', loc='left', y=0.75, x=0.02)
 ax[4].set_title('Texas', loc='left', y=0.75, x=0.02)
 fig.suptitle('media della densità di NO2 [$\mu g/m^3$] al giorno [d] in 5 stati confinanti, dati originali e filtrati')
 plt.show()
+
+df6 = fn.corr(loud, kand, arkd, okd, texd, loum, kanm, arkm, okm, texm, 'LA', 'KS', 'AR', 'OK', 'TX')
+print('correlazione regione 6')
+print(df6.corr())
 
 #regione 7: colorado, nevada, utah, arizona, new mexico
 fig,ax = plt.subplots(5,1, figsize=(40,40))
@@ -323,6 +347,10 @@ ax[4].set_title('New Mexico', loc='left', y=0.75, x=0.02)
 fig.suptitle('media della densità di NO2 [$\mu g/m^3$] al giorno [d] in 5 stati confinanti, dati originali e filtrati')
 plt.show()
 
+df7 = fn.corr(cold, nevd, utd, arid, nmd, colm, nevm, utm, arim, nmm, 'CO', 'NV', 'UT', 'AZ', 'NM')
+print('correlazione regione 7')
+print(df7.corr())
+
 #regione 8: washington, oregon, idaho, california, hawaii
 fig,ax = plt.subplots(5,1, figsize=(40,40))
 ax[0].plot(wasd, wasm, color='forestgreen')
@@ -342,3 +370,7 @@ ax[3].set_title('California', loc='left', y=0.75, x=0.02)
 ax[4].set_title('Hawaii', loc='left', y=0.75, x=0.02)
 fig.suptitle('media della densità di NO2 [$\mu g/m^3$] al giorno [d] in 5 stati confinanti, dati originali e filtrati')
 plt.show()
+
+df8 = fn.corr(wasd, ored, idad, cald, hawd, wasm, orem, idam, calm, hawm, 'WA', 'OR', 'ID', 'CA', 'HI')
+print('correlazione regione 8')
+print(df8.corr())
