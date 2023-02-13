@@ -12,46 +12,18 @@ col = pd.read_csv('colorado.csv')
 nm = pd.read_csv('new_mexico.csv')
 
 #creo le tabelle delle stazioni
-ar3002 = fn.stazione(ar, 3002)
-ar9997 = fn.stazione(ar, 9997)
-ar1028 = fn.stazione(ar, 1028)
-ut2 = fn.stazione(ut, 2)
-ut3006 = fn.stazione(ut, 3006)
-ut5632 = fn.stazione(ut, 5632)
-wy100 = fn.stazione(wy, 100)
-wy870 = fn.stazione(wy, 870)
-col2 = fn.stazione(col, 2)
-col3 = fn.stazione(col, 3)
-col3001 = fn.stazione(col, 3001)
-nm23 = fn.stazione(nm, 23)
-
-#estraggo gli array con le date
-ar3002d = ar3002['Date Local'].values
-ar9997d = ar9997['Date Local'].values
-ar1028d = ar1028['Date Local'].values
-ut2d = ut2['Date Local'].values
-ut3006d = ut3006['Date Local'].values
-ut5632d = ut5632['Date Local'].values
-wy100d = wy100['Date Local'].values
-wy870d = wy870['Date Local'].values
-col2d = col2['Date Local'].values
-col3d = col3['Date Local'].values
-col3001d = col3001['Date Local'].values
-nm23d = nm23['Date Local'].values
-
-#estraggo gli array con le medie di NO2
-ar3002m = ar3002['NO2 Mean'].values
-ar9997m = ar9997['NO2 Mean'].values
-ar1028m = ar1028['NO2 Mean'].values
-ut2m = ut2['NO2 Mean'].values
-ut3006m = ut3006['NO2 Mean'].values
-ut5632m = ut5632['NO2 Mean'].values
-wy100m = wy100['NO2 Mean'].values
-wy870m = wy870['NO2 Mean'].values
-col2m = col2['NO2 Mean'].values
-col3m = col3['NO2 Mean'].values
-col3001m = col3001['NO2 Mean'].values
-nm23m = nm23['NO2 Mean'].values
+ar3002d, ar3002m = fn.stazione(ar, 3002)
+ar9997d, ar9997m = fn.stazione(ar, 9997)
+ar1028d, ar1028m = fn.stazione(ar, 1028)
+ut2d, ut2m = fn.stazione(ut, 2)
+ut3006d, ut3006m = fn.stazione(ut, 3006)
+ut5632d, ut5632m = fn.stazione(ut, 5632)
+wy100d, wy100m = fn.stazione(wy, 100)
+wy870d, wy870m = fn.stazione(wy, 870)
+col2d, col2m = fn.stazione(col, 2)
+col3d, col3m = fn.stazione(col, 3)
+col3001d, col3001m = fn.stazione(col, 3001)
+nm23d, nm23m = fn.stazione(nm, 23)
 
 #grafico stazioni arizona
 fig,ax = plt.subplots(3,1, figsize=(40,40))
@@ -101,46 +73,18 @@ plt.title('media della densità di NO2 [$\mu g/m^3$] al giorno [d] in New Mexico
 plt.show()
 
 #analisi di Fourier dei dati di NO2 delle stazioni
-#trasformate di fourier della serie temporale
-ar3002tf = fft.rfft(ar3002m)
-ar9997tf = fft.rfft(ar9997m)
-ar1028tf = fft.rfft(ar1028m)
-ut2tf = fft.rfft(ut2m)
-ut3006tf = fft.rfft(ut3006m)
-ut5632tf = fft.rfft(ut5632m)
-wy100tf = fft.rfft(wy100m)
-wy870tf = fft.rfft(wy870m)
-col2tf = fft.rfft(col2m)
-col3tf = fft.rfft(col3m)
-col3001tf = fft.rfft(col3001m)
-nm23tf = fft.rfft(nm23m)
-#spettro di potenza
-ar3002sp = np.absolute(ar3002tf)**2
-ar9997sp = np.absolute(ar9997tf)**2
-ar1028sp = np.absolute(ar1028tf)**2
-ut2sp = np.absolute(ut2tf)**2
-ut3006sp = np.absolute(ut3006tf)**2
-ut5632sp = np.absolute(ut5632tf)**2
-wy100sp = np.absolute(wy100tf)**2
-wy870sp = np.absolute(wy870tf)**2
-col2sp = np.absolute(col2tf)**2
-col3sp = np.absolute(col3tf)**2
-col3001sp = np.absolute(col3001tf)**2
-nm23sp = np.absolute(nm23tf)**2
-#freqenza
-a = 0.5
-ar3002fr = a*fft.rfftfreq(ar3002tf.size, d=1)
-ar9997fr = a*fft.rfftfreq(ar9997tf.size, d=1)
-ar1028fr = a*fft.rfftfreq(ar1028tf.size, d=1)
-ut2fr = a*fft.rfftfreq(ut2tf.size, d=1)
-ut3006fr = a*fft.rfftfreq(ut3006tf.size, d=1)
-ut5632fr = a*fft.rfftfreq(ut5632tf.size, d=1)
-wy100fr = a*fft.rfftfreq(wy100tf.size, d=1)
-wy870fr = a*fft.rfftfreq(wy870tf.size, d=1)
-col2fr = a*fft.rfftfreq(col2tf.size, d=1)
-col3fr = a*fft.rfftfreq(col3tf.size, d=1)
-col3001fr = a*fft.rfftfreq(col3001tf.size, d=1)
-nm23fr = a*fft.rfftfreq(nm23tf.size, d=1)
+ar3002tf, ar3002sp, ar3002fr, ar3002max = fn.trasf(ar3002m)
+ar9997tf, ar9997sp, ar9997fr, ar9997max = fn.trasf(ar9997m)
+ar1028tf, ar1028sp, ar1028fr, ar1028max = fn.trasf(ar1028m)
+ut2tf, ut2sp, ut2fr, ut2max = fn.trasf(ut2m)
+ut3006tf, ut3006sp, ut3006fr, ut3006max = fn.trasf(ut3006m)
+ut5632tf, ut5632sp, ut5632fr, ut5632max = fn.trasf(ut5632m)
+wy100tf, wy100sp, wy100fr, wy100max = fn.trasf(wy100m)
+wy870tf, wy870sp, wy870fr, wy870max = fn.trasf(wy870m)
+col2tf, col2sp, col2fr, col2max = fn.trasf(col2m)
+col3tf, col3sp, col3fr, col3max = fn.trasf(col3m)
+col3001tf, col3001sp, col3001fr, col3001max = fn.trasf(col3001m)
+nm23tf, nm23sp, nm23fr, nm23max = fn.trasf(nm23m)
 
 #grafico spettro di potenza in funzione della frequenza
 #arizona
@@ -213,21 +157,6 @@ plt.title('spettro di potenza [$\mu g^2/m^6$] su frequenza [$d^{-1}$] di NO2 in 
 plt.yscale('log')
 plt.xscale('log')
 plt.show()
-
-#periodicità
-#massimo dello spettro di potenza
-ar3002max = np.argmax(ar3002sp[1:ar3002tf.size//2])+1
-ar9997max = np.argmax(ar9997sp[1:ar9997tf.size//2])+1
-ar1028max = np.argmax(ar1028sp[1:ar1028tf.size//2])+1
-ut2max = np.argmax(ut2sp[1:ut2tf.size//2])+1
-ut3006max = np.argmax(ut3006sp[1:ut3006tf.size//2])+1
-ut5632max = np.argmax(ut5632sp[1:ut5632tf.size//2])+1
-wy100max = np.argmax(wy100sp[1:wy100tf.size//2])+1
-wy870max = np.argmax(wy870sp[1:wy870tf.size//2])+1
-col2max = np.argmax(col2sp[1:col2tf.size//2])+1
-col3max = np.argmax(col3sp[1:col3tf.size//2])+1
-col3001max = np.argmax(col3001sp[1:col3001tf.size//2])+1
-nm23max = np.argmax(nm23sp[1:nm23tf.size//2])+1
 
 print('Arizona 3002: Massimo PS: {:f} - Freq {:f} - Periodo: {:d}'.format( ar3002sp[ar3002max], ar3002fr[ar3002max], int(1/ar3002fr[ar3002max])))
 print('Arizona 9997: Massimo PS: {:f} - Freq {:f} - Periodo: {:d}'.format( ar9997sp[ar9997max], ar9997fr[ar9997max], int(1/ar9997fr[ar9997max])))
@@ -340,7 +269,7 @@ wy870f = fn.inv(wy870sp, 7e4, wy870tf, wy870m)
 col2f = fn.inv(col2sp, 5e6, col2tf, col2m)
 col3f = fn.inv(col3sp, 1e3, col3tf, col3m)
 col3001f = fn.inv(col3001sp, 5e6, col3001tf, col3001m)
-nm23f = fn.inv(nm23sp, 5e6, nm23tf, nm23m)
+nm23f = fn.inv(nm23sp, 6e6, nm23tf, nm23m)
 
 #grafici di confronto tra segnale originale e il segnale filtrato
 #grafico stazioni arizona
@@ -401,3 +330,64 @@ plt.plot(nm23d, nm23m, color='mediumslateblue')
 plt.plot(nm23d, nm23f, color='rebeccapurple')
 plt.title('media della densità di NO2 [$\mu g/m^3$] al giorno [d] in New Mexico, dati originali e filtrati')
 plt.show()
+
+#correlazione
+#arizona
+st3002 = pd.DataFrame()
+st3002['date'] = ar3002d
+st3002['staz 3002'] = ar3002m
+st9997 = pd.DataFrame()
+st9997['date'] = ar9997d
+st9997['staz 9997'] = ar9997m
+st1028 = pd.DataFrame()
+st1028['date'] = ar1028d
+st1028['staz 1028'] = ar1028m
+
+ar1 = pd.merge(st3002, st9997, how='inner', left_on='date', right_on='date')
+ar2 = pd.merge(ar1, st1028, how='inner', left_on='date', right_on='date')
+ar = ar2[['staz 3002', 'staz 9997', 'staz 1028']]
+print('correlazione arizona')
+print(ar.corr())
+
+#utah
+# la stazione2 non è inserita perché ha pochi dati
+st3006 = pd.DataFrame()
+st3006['date'] = ut3006d
+st3006['staz 3006'] = ut3006m
+st5632 = pd.DataFrame()
+st5632['date'] = ut5632d
+st5632['staz 5632'] = ut5632m
+
+ut1 = pd.merge(st3006, st5632, how='inner', left_on='date', right_on='date')
+ut = ut1[['staz 3006', 'staz 5632']]
+print('correlazione utah')
+print(ut.corr())
+
+#wyoming
+st100 = pd.DataFrame()
+st100['date'] = wy100d
+st100['staz 100'] = wy100m
+st870 = pd.DataFrame()
+st870['date'] = wy870d
+st870['staz 870'] = wy870m
+
+wy1 = pd.merge(st100, st870, how='inner', left_on='date', right_on='date')
+wy = wy1[['staz 100', 'staz 870']]
+print('correlazione wyoming')
+print(wy.corr())
+#colorado
+# la stazione 3 non è inserita perché ha pochi dati
+st2 = pd.DataFrame()
+st2['date'] = col2d
+st2['staz 2'] = col2m
+st3001 = pd.DataFrame()
+st3001['date'] = col3001d
+st3001['staz 3001'] = col3001m
+
+col1 = pd.merge(st2, st3001, how='inner', left_on='date', right_on='date')
+col = col1[['staz 2', 'staz 3001']]
+print('correlazione colorado')
+print(col.corr())
+#new mwxico
+# il new mwxico ha solo una stazione, non h senso fare la correlazione
+
