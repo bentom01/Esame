@@ -5,11 +5,11 @@ from scipy import constants, fft, optimize
 import funzioni as fn
  
 #estraggo le tabelle degli stati dai file csv
-ar = pd.read_csv('~/Esame/arizona.csv')
-ut = pd.read_csv('~/Esame/utah.csv')
-wy = pd.read_csv('~/Esame/wyoming.csv')
-col = pd.read_csv('~/Esame/colorado.csv')
-nm = pd.read_csv('~/Esame//new_mexico.csv')
+ar = pd.read_csv('arizona.csv')
+ut = pd.read_csv('utah.csv')
+wy = pd.read_csv('wyoming.csv')
+col = pd.read_csv('colorado.csv')
+nm = pd.read_csv('new_mexico.csv')
 
 #creo le tabelle delle stazioni
 ar3002 = fn.stazione(ar, 3002)
