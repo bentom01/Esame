@@ -34,6 +34,7 @@ ax[0].set_title('stazione 3002', loc='left', y=0.75, x=0.02)
 ax[1].set_title('stazione 9997', loc='left', y=0.75, x=0.02)
 ax[2].set_title('stazione 1028', loc='left', y=0.75, x=0.02)
 fig.suptitle('media della densità di NO2 [$\mu g/m^3$] al giorno [d] in Arizona')
+fig.savefig('dati_stazioni_arizona.png')
 plt.show()
 
 #grafico stazioni utah
@@ -45,6 +46,7 @@ ax[0].set_title('stazione 2', loc='left', y=0.75, x=0.02)
 ax[1].set_title('stazione 3006', loc='left', y=0.75, x=0.02)
 ax[2].set_title('stazione 5632', loc='left', y=0.75, x=0.02)
 fig.suptitle('media della densità di NO2 [$\mu g/m^3$] al giorno [d] in Utah')
+fig.savefig('dati_stazioni_utah.png')
 plt.show()
 
 #grafico stazioni wyoming
@@ -54,6 +56,7 @@ ax[1].plot(wy870d, wy870m, color='indianred')
 ax[0].set_title('stazione 100', loc='left', y=0.75, x=0.02)
 ax[1].set_title('stazione 870', loc='left', y=0.75, x=0.02)
 fig.suptitle('media della densità di NO2 [$\mu g/m^3$] al giorno [d] in Wyoming')
+fig.savefig('dati_stazioni_wyoming.png')
 plt.show()
 
 #grafico stazioni colorado
@@ -65,11 +68,13 @@ ax[0].set_title('stazione 2', loc='left', y=0.75, x=0.02)
 ax[1].set_title('stazione 3', loc='left', y=0.75, x=0.02)
 ax[2].set_title('stazione 3001', loc='left', y=0.75, x=0.02)
 fig.suptitle('media della densità di NO2 [$\mu g/m^3$] al giorno [d] in Colorado')
+fig.savefig('dati_stazioni_colorado.png')
 plt.show()
 
 #grafico stazione new mexico
 plt.plot(nm23d, nm23m, color='mediumslateblue')
 plt.title('media della densità di NO2 [$\mu g/m^3$] al giorno [d] in New Mexico')
+fig.savefig('dati_stazioni_new_mexico.png')
 plt.show()
 
 #analisi di Fourier dei dati di NO2 delle stazioni
@@ -102,6 +107,7 @@ ax[1].set_xscale('log')
 ax[2].set_yscale('log')
 ax[2].set_xscale('log')
 fig.suptitle('spettro di potenza [$\mu g^2/m^6$] su frequenza [$d^{-1}$] di NO2 in Arizona')
+fig.savefig('sp_fr_arizona.png')
 plt.show()
 
 #utah
@@ -119,6 +125,7 @@ ax[1].set_xscale('log')
 ax[2].set_yscale('log')
 ax[2].set_xscale('log')
 fig.suptitle('spettro di potenza [$\mu g^2/m^6$] su frequenza [$d^{-1}$] di NO2 in Utah')
+fig.savefig('sp_fr_utah.png')
 plt.show()
 
 #wyoming
@@ -132,6 +139,7 @@ ax[0].set_xscale('log')
 ax[1].set_yscale('log')
 ax[1].set_xscale('log')
 fig.suptitle('spettro di potenza [$\mu g^2/m^6$] su frequenza [$d^{-1}$] di NO2 in Wyoming')
+fig.savefig('sp_fr_wyoming.png')
 plt.show()
 
 #colorado
@@ -149,6 +157,7 @@ ax[1].set_xscale('log')
 ax[2].set_yscale('log')
 ax[2].set_xscale('log')
 fig.suptitle('spettro di potenza [$\mu g^2/m^6$] su frequenza [$d^{-1}$] di NO2 in Colorado')
+fig.savefig('sp_fr_colorado.png')
 plt.show()
 
 #new mexico
@@ -156,6 +165,7 @@ plt.plot(nm23fr[1:nm23tf.size//2], nm23sp[1:nm23tf.size//2], color='mediumslateb
 plt.title('spettro di potenza [$\mu g^2/m^6$] su frequenza [$d^{-1}$] di NO2 in New Mexico')
 plt.yscale('log')
 plt.xscale('log')
+fig.savefig('sp_fr_new_mexico.png')
 plt.show()
 
 print('Arizona 3002: Massimo PS: {:f} - Freq {:f} - Periodo: {:d}'.format( ar3002sp[ar3002max], ar3002fr[ar3002max], int(1/ar3002fr[ar3002max])))
@@ -192,6 +202,7 @@ ax[1].set_xscale('log')
 ax[2].set_yscale('log')
 ax[2].set_xscale('log')
 fig.suptitle('spettro di potenza [$\mu g^2/m^6$] su  periodo T [$d$] di NO2 in Arizona')
+fig.savefig('sp_T_arizona.png')
 plt.show()
 
 #utah
@@ -212,6 +223,7 @@ ax[1].set_xscale('log')
 ax[2].set_yscale('log')
 ax[2].set_xscale('log')
 fig.suptitle('spettro di potenza [$\mu g^2/m^6$] su periodo T [$d$] di NO2 in Utah')
+fig.savefig('sp_T_utah.png')
 plt.show()
 
 #wyoming
@@ -227,6 +239,7 @@ ax[0].set_xscale('log')
 ax[1].set_yscale('log')
 ax[1].set_xscale('log')
 fig.suptitle('spettro di potenza [$\mu g^2/m^6$] su periodo T [$d$] di NO2 in Wyoming')
+fig.savefig('sp_T_wyoming.png')
 plt.show()
 
 #colorado
@@ -247,6 +260,7 @@ ax[1].set_xscale('log')
 ax[2].set_yscale('log')
 ax[2].set_xscale('log')
 fig.suptitle('spettro di potenza [$\mu g^2/m^6$] su periodo T [$d$] di NO2 in Colorado')
+fig.savefig('sp_T_colorado.png')
 plt.show()
 
 #new mexico
@@ -255,6 +269,7 @@ plt.plot(1/nm23fr[nm23max], nm23sp[nm23max], 'o', color='rebeccapurple')
 plt.title('spettro di potenza [$\mu g^2/m^6$] su periodo T [$d$] di NO2 in New Mexico')
 plt.yscale('log')
 plt.xscale('log')
+fig.savefig('sp_T_new_mexico.png')
 plt.show()
 
 #filtro ai coefficienti di fourier selezionando solo le componenti che descrivono l'andamento generale in funzione del tempo (escludendo futtuazioni di breve periodo) e faccio la trasformata FFT inversa con coeff filtrati 
@@ -284,6 +299,7 @@ ax[0].set_title('stazione 3002', loc='left', y=0.75, x=0.02)
 ax[1].set_title('stazione 9997', loc='left', y=0.75, x=0.02)
 ax[2].set_title('stazione 1028', loc='left', y=0.75, x=0.02)
 fig.suptitle('media della densità di NO2 [$\mu g/m^3$] al giorno [d] in Arizona, dati originali e filtrati')
+fig.savefig('filtro_arizona.png')
 plt.show()
 
 #grafico stazioni utah
@@ -298,6 +314,7 @@ ax[0].set_title('stazione 2', loc='left', y=0.75, x=0.02)
 ax[1].set_title('stazione 3006', loc='left', y=0.75, x=0.02)
 ax[2].set_title('stazione 5632', loc='left', y=0.75, x=0.02)
 fig.suptitle('media della densità di NO2 [$\mu g/m^3$] al giorno [d] in Utah, dati originali e filtrati')
+fig.savefig('filtro_utah.png')
 plt.show()
 
 #grafico stazioni wyoming
@@ -309,6 +326,7 @@ ax[1].plot(wy870d, wy870f, color='darkred')
 ax[0].set_title('stazione 100', loc='left', y=0.75, x=0.02)
 ax[1].set_title('stazione 870', loc='left', y=0.75, x=0.02)
 fig.suptitle('media della densità di NO2 [$\mu g/m^3$] al giorno [d] in Wyoming, dati originali e filtrati')
+fig.savefig('filtro_wyoming.png')
 plt.show()
 
 #grafico stazioni colorado
@@ -323,12 +341,14 @@ ax[0].set_title('stazione 2', loc='left', y=0.75, x=0.02)
 ax[1].set_title('stazione 3', loc='left', y=0.75, x=0.02)
 ax[2].set_title('stazione 3001', loc='left', y=0.75, x=0.02)
 fig.suptitle('media della densità di NO2 [$\mu g/m^3$] al giorno [d] in Colorado, dati originali e filtrati')
+fig.savefig('filtro_colorado.png')
 plt.show()
 
 #grafico stazione new mexico
 plt.plot(nm23d, nm23m, color='mediumslateblue')
 plt.plot(nm23d, nm23f, color='rebeccapurple')
 plt.title('media della densità di NO2 [$\mu g/m^3$] al giorno [d] in New Mexico, dati originali e filtrati')
+fig.savefig('filtro_new_mexico.png')
 plt.show()
 
 #correlazione
